@@ -1,7 +1,8 @@
 package payment_analyzer;
 
 import java.time.LocalDateTime;
+import telran.parking.dto.CameraDto;
 
 public interface RepeatCarDetectionService {
-	boolean isReDetect(long cameraId, long slotId, String carNumber, LocalDateTime timeStamp);
+	CameraDto isReDetect(long cameraId, long slotId, String carNumber, LocalDateTime timeStamp);
 }
