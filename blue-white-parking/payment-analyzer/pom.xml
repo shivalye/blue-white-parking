@@ -9,10 +9,6 @@
 	</parent>
 	<artifactId>payment-analyzer</artifactId>
 	<dependencies>
-		<dependency>
-			<groupId>telran.parking</groupId>
-			<artifactId>parking-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+
 	</dependencies>
 </project>
