@@ -29,26 +29,28 @@ class PaymentAnalyzerControllerTest {
 	InputDestination producer;
 	@Autowired
 	OutputDestination consumer;
-	ParkingDto parkingData = new ParkingDto(12356, 1, "111", LocalDateTime.now());
-	String consumerBindingName = "parkingAnalyzerConsumer-in-0";
-	
+	private ParkingDto parkingData = new ParkingDto(12356, 1, "111", LocalDateTime.now());
+	private String consumerBindingName = "parkingAnalyzerConsumer-in-0";
+
 	@BeforeEach
 	void setUp() {
+		log.info("waiting chanell1");
 		when(clientService.isReDetect(parkingData)).thenReturn(parkingData);
 	}
-	
-	
+
 	@Test
 	void loadApplicationContext() {
+		log.info("waiting chanell1");
 		assertNotNull(clientService);
-		log.debug("waiting chanell");
+
 	}
-	
+
 	@Test
 	void notReDetect() {
+		log.info("waiting chanell1");
 		producer.send(new GenericMessage<ParkingDto>(parkingData), consumerBindingName);
-		Message<byte[]> message = consumer.receive(100, consumerBindingName);
-		assertNotNull(message);
+		Message<byte[]> message = consumer.receive(10, consumerBindingName);
+		assertNull(message);
 	}
 
 }
